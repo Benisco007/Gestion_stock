@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MaterialController;
 use App\Http\Controllers\Api\CompanySettingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ClientController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -17,4 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Paramètres entreprise
     Route::get('/settings', [CompanySettingController::class, 'show']);
     Route::post('/settings', [CompanySettingController::class, 'upsert']);
+
+    // Clients
+    Route::apiResource('clients', ClientController::class);
 });
